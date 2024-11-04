@@ -5,7 +5,7 @@ paths:
 collections_config:
   data:
     path: 'src/config'
-    name: Pages
+    name: Site Config
     icon: analytics
   pages:
     path: 'src/content/pages/english'
@@ -59,6 +59,25 @@ collections_config:
     _enabled_editors:
       - data
     icon: translate
+
+collection_groups:
+  - heading: English
+    collections:
+      - pages
+      - authors
+      - blog
+  - heading: French
+    collections:
+      - pages_fr
+      - authors_fr
+      - blog_fr
+  - heading: Data Files
+    collections:
+      - data
+      - translations
+      - sections
+      - section_fr
+
 
 timezone: Pacific/Auckland
 

@@ -10,29 +10,35 @@ collections_config:
   pages:
     path: 'src/content/pages/english'
     name: Pages
+    url: '/en/[slug]/'
     _enabled_editors:
       - visual
     icon: wysiwyg
   pages_fr:
     path: 'src/content/pages/french'
     name: Pages
+    url: '/fr/[slug]/'
     _enabled_editors:
       - visual
     icon: wysiwyg
   authors:
     path: src/content/authors/english
+    url: '/en/authors/[slug]/'
     name: Authors
     icon: account_circle
   authors_fr:
     path: src/content/authors/french
+    url: '/fr/authors/[slug]/'
     name: Authors (Fr)
     icon: account_circle
   blog:
     path: src/content/blog/english
+    url: '/en/blog/[slug]/'
     name: Blog
     icon: newspaper
   blog_fr:
     path: src/content/blog/french
+    url: '/fr/blog/[slug]/'
     name: Blog (Fr)
     icon: newspaper
   sections:

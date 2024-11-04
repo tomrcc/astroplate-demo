@@ -10,6 +10,7 @@ import { sortByDate } from "@/lib/utils/sortFunctions";
 import PageHeader from "@/partials/PageHeader.astro";
 import PostSidebar from "@/partials/PostSidebar.astro";
 import type { ContentEntryMap } from "astro:content";
+import { getEntry } from "astro:content";
 
 export function getStaticPaths() {
   const paths = supportedLang.map((lang) => ({
@@ -19,10 +20,12 @@ export function getStaticPaths() {
 }
 const { lang } = Astro.params;
 const BLOG_FOLDER = "blog";
-const postIndex = await getListPage(
-  BLOG_FOLDER,
-  lang as keyof ContentEntryMap
-);
+const postIndex =
+  lang === "fr"
+    ? await getEntry("pages", "french/blog")
+    : await getEntry("pages", "english/blog");
+
+console.log(postIndex);
 const langCollection: keyof ContentEntryMap = lang as keyof ContentEntryMap;
 const posts = await getSinglePage(BLOG_FOLDER, lang as keyof ContentEntryMap);
 
@@ -35,12 +38,11 @@ const currentPosts = sortedPosts.slice(0, config.settings.pagination);
 ---
 
 <Base
-  title={postIndex[0].data.title}
-  meta_title={postIndex[0].data.meta_title}
-  image={postIndex[0].data.image}
-  description={postIndex[0].data.description}
->
-  <PageHeader title={postIndex[0].data.title} />
+  title={postIndex.data.title}
+  meta_title={postIndex.data.meta_title}
+  image={postIndex.data.image}
+  description={postIndex.data.description}>
+  <PageHeader title={postIndex.data.title} />
   <section class="section">
     <div class="container">
       <div class="row gx-5">
